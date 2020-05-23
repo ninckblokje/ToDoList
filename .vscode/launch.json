@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "program": "dotnet",
-            "args": ["run"],
+            "args": ["run", "--pathbase=/ToDoList"],
             "cwd": "${workspaceFolder}",
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"

@@ -1,0 +1,30 @@
+image: mcr.microsoft.com/dotnet/core/sdk:3.1
+
+stages:
+    - build
+    - publish
+
+before_script:
+    - "dotnet restore"
+
+build:
+    stage: build
+    script:
+        - "dotnet build"
+
+publish:
+    stage: publish
+    script:
+        - "dotnet publish"
+
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r bin/Debug/netstandard2.1/publish/wwwroot/* .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
